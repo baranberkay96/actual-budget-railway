@@ -1,0 +1,75 @@
+{
+ "name": "Actual Budget 26.11 (Personal Finance, Sync Server)",
+ "idSeed": "Actual Budget 26.11 (Personal Finance, Sync Server) / 2026-11-24",
+ "description": "Local-first envelope budgeting app with a password-protected sync server.",
+ "category": "Other",
+ "tags": [
+  "actual-budget",
+  "budgeting",
+  "personal-finance",
+  "envelope-budgeting",
+  "ynab-alternative",
+  "local-first",
+  "sqlite"
+ ],
+ "image": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/actual-budget.svg",
+ "upstream": {
+  "repo": "actualbudget/actual",
+  "version": "26.11.0",
+  "license": "MIT",
+  "images": {
+   "actual": "actualbudget/actual-server:26.11.0@sha256:06cf186569cf58d93e12659ff1a517b65b5b0ebee7050a3991d4bd8a1d398da6 (pushed 2026-11-02)"
+  },
+  "checked": "2026-11-24"
+ },
+ "services": {
+  "Actual": {
+   "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/actual-budget.svg",
+   "source": {
+    "repo": "baranberkay96/actual-budget-railway",
+    "rootDirectory": "/services/actual"
+   },
+   "startCommand": null,
+   "preDeployCommand": null,
+   "healthcheckPath": "/health",
+   "healthcheckTimeout": 300,
+   "restartPolicyType": "ALWAYS",
+   "numReplicas": 1,
+   "cronSchedule": null,
+   "publicDomain": true,
+   "targetPort": 5006,
+   "tcpProxy": null,
+   "volume": {
+    "mountPath": "/data"
+   },
+   "variables": {
+    "ACTUAL_PASSWORD": {
+     "defaultValue": "${{secret(24, \"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789\")}}",
+     "description": "Server password (8-128 chars), applied at every start: change it here, not in the app.",
+     "required": false
+    },
+    "PORT": {
+     "defaultValue": "5006",
+     "description": "Port the sync server listens on; the public domain points here.",
+     "required": false
+    },
+    "ACTUAL_UPLOAD_FILE_SYNC_SIZE_LIMIT_MB": {
+     "defaultValue": "20",
+     "description": "Maximum size in MB of a budget file upload (raise for large budgets).",
+     "required": false
+    },
+    "ACTUAL_UPLOAD_SYNC_ENCRYPTED_FILE_SYNC_SIZE_LIMIT_MB": {
+     "defaultValue": "50",
+     "description": "Maximum size in MB of an end-to-end encrypted budget upload.",
+     "required": false
+    },
+    "RAILWAY_DEPLOYMENT_DRAINING_SECONDS": {
+     "defaultValue": "10",
+     "description": "Seconds the server gets to close its SQLite files cleanly on redeploy.",
+     "required": false
+    }
+   }
+  }
+ },
+ "buckets": []
+}
