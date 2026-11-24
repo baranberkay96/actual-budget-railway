@@ -102,8 +102,10 @@ async function bootstrapFresh() {
       ? 'server password set from ACTUAL_PASSWORD'
       : 'server locked with a random password; set ACTUAL_PASSWORD (8-128 characters) and redeploy to log in');
   } finally {
+    // The temporary server keeps fetch's keep-alive socket open on SIGTERM;
+    // the bootstrap is committed to SQLite already, so wait briefly only.
     child.kill('SIGTERM');
-    await Promise.race([exited, sleep(10000)]);
+    await Promise.race([exited, sleep(3000)]);
     if (child.exitCode === null && child.signalCode === null) child.kill('SIGKILL');
   }
 }

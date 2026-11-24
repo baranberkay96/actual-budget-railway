@@ -15,6 +15,7 @@ COPY --chmod=0755 railway-start.sh /railway/railway-start.sh
 COPY --chmod=0644 railway-password.mjs /railway/railway-password.mjs
 
 ENV ACTUAL_DATA_DIR=/data \
+    TINI_SUBREAPER=1 \
     ACTUAL_LOGIN_METHOD=password \
     ACTUAL_ALLOWED_LOGIN_METHODS=password,openid \
     PORT=5006
