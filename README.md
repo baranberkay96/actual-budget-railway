@@ -1,5 +1,7 @@
 # Deploy and Host Actual Budget with Railway
 
+[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/actual-budget-2611-personal-finance-sync?referralCode=20H68q)
+
 Actual Budget is an open-source, local-first personal finance app built around envelope (zero-based) budgeting. This template runs the official Actual sync server on Railway: it serves the web app, keeps your budgets in sync across browsers and devices, and is protected by a server password that is set before the server goes online.
 
 ## About Hosting Actual Budget
