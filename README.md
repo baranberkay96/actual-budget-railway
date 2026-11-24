@@ -48,7 +48,7 @@ Actual keeps a full copy of each budget in the browser and uses the sync server 
 
 **Backups.** The app can export a budget as a ZIP (Settings, Export). Railway volume backups cover the whole `/data` directory.
 
-**Scaling and upgrades.** Actual is a single-instance server with SQLite on a volume: keep one replica. It idles at about 100 MB RAM and fits the Trial plan. To upgrade, eject the repo and change the image tag and digest in `services/actual/Dockerfile` to a newer `actualbudget/actual-server` release, then redeploy; database migrations run on start. Read the release notes first, and export your budgets before major upgrades.
+**Scaling and upgrades.** Actual is a single-instance server with SQLite on a volume: keep one replica. It idled at 0.2–0.3 GB RAM in our tests and fits the Trial plan. To upgrade, eject the repo and change the image tag and digest in `services/actual/Dockerfile` to a newer `actualbudget/actual-server` release, then redeploy; database migrations run on start. Read the release notes first, and export your budgets before major upgrades.
 
 ### Why Deploy Actual Budget on Railway?
 

@@ -30,7 +30,7 @@ Variables: `ACTUAL_PASSWORD` (secret 24), `PORT` (5006), `ACTUAL_UPLOAD_FILE_SYN
 
 | Service | Idle RAM | Typical RAM | CPU |
 |---|---|---|---|
-| Actual | ≈100 MB (see report) | 150–300 MB while syncing large budgets | ≈0 idle |
+| Actual | 0.20–0.30 GB measured (Railway graph, incl. page cache) | 0.3–0.5 GB during password hashing and large syncs | ≈0 idle |
 
 Estimated cost: ≈$1–3/month + volume ($0.15/GB-month). Minimum plan: Trial.
 
